@@ -65,7 +65,8 @@ const postAddProduct = async (req, res) => {
     req.flash('success', 'Product added successfully');
     res.redirect('/admin/products');
   } catch (err) {
-    req.flash('error', 'Something went wrong while saving the product');
+    console.error("Error saving product:", err);
+    req.flash('error', err.message || 'Something went wrong while saving the product');
     res.redirect('/admin/products');
   }
 };
@@ -143,7 +144,8 @@ const postEditProduct = async (req, res) => {
     req.flash('success', 'Product updated successfully');
     res.redirect('/admin/products');
   } catch (err) {
-    req.flash('error', 'Something went wrong');
+    console.error("Error updating product:", err);
+    req.flash('error', err.message || 'Something went wrong');
     res.redirect('/admin/products');
   }
 };
@@ -157,6 +159,7 @@ const postDeleteProduct = async (req, res) => {
     }
 
     product.isDeleted = true;
+    product.slug = `${product.slug}-deleted-${Date.now()}`;
 
     
     if (product.image) {
