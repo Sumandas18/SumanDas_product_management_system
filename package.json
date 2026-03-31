@@ -1,0 +1,34 @@
+{
+  "name": "shubhradeep_bose_node_2nd_exam",
+  "version": "1.0.0",
+  "description": "2nd assesment product product and admin pannel",
+  "main": "app.js",
+  "scripts": {
+    "dev:css": "npx @tailwindcss/cli -i ./public/css/input.css -o ./public/css/output.css --watch",
+    "build:css": "npx @tailwindcss/cli -i ./public/css/input.css -o ./public/css/output.css --minify",
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "author": "Shubhradeep Bose",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.3.1",
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "joi": "^18.1.2",
+    "jsonwebtoken": "^9.0.3",
+    "method-override": "^3.0.0",
+    "mongoose": "^9.3.3",
+    "multer": "^2.1.1",
+    "nodemon": "^3.1.14",
+    "slugify": "^1.6.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.2.2",
+    "tailwindcss": "^4.2.2"
+  }
+}

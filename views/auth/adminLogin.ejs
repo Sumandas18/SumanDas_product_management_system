@@ -1,0 +1,52 @@
+<%- include('../partials/header') %>
+
+<div class="min-h-[75vh] flex items-center justify-center">
+  <div class="w-full max-w-md">
+
+    <div class="bg-zinc-950 border border-red-900/40 rounded-3xl overflow-hidden shadow-2xl shadow-red-950/30">
+      <div class="h-1 w-full bg-gradient-to-r from-red-700 via-red-500 to-red-700"></div>
+
+      <div class="p-10">
+        <!-- Icon + Title -->
+        <div class="mb-8 text-center">
+          <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-red-600/10 border border-red-500/20 mb-4">
+            <svg class="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+          </div>
+          <h1 class="text-3xl font-black text-white tracking-tight">ADMIN <span class="text-red-500">PORTAL</span></h1>
+          <p class="text-zinc-600 text-sm mt-2">Restricted access — authorised users only</p>
+        </div>
+
+        <form action="/auth/admin/login" method="POST" class="space-y-5">
+          <div>
+            <label for="email" class="block text-xs font-bold text-zinc-500 uppercase tracking-widest mb-2">Admin Email</label>
+            <input type="email" id="email" name="email"
+              required
+              value="<%= oldInput ? oldInput.email : '' %>"
+              placeholder="admin@example.com"
+              class="w-full bg-zinc-900 border border-zinc-800 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all placeholder-zinc-700 text-sm">
+          </div>
+
+          <div>
+            <label for="password" class="block text-xs font-bold text-zinc-500 uppercase tracking-widest mb-2">Master Password</label>
+            <input type="password" id="password" name="password"
+              required
+              placeholder="••••••••"
+              class="w-full bg-zinc-900 border border-zinc-800 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all placeholder-zinc-700 text-sm">
+          </div>
+
+          <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-black text-xs uppercase tracking-[0.2em] py-4 rounded-xl transition-all shadow-lg shadow-red-600/25 hover:shadow-red-600/40 flex items-center justify-center gap-3 mt-2">
+            <span>Authenticate</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

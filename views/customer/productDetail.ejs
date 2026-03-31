@@ -1,0 +1,61 @@
+<%- include('../partials/header') %>
+
+<div class="py-8 max-w-5xl mx-auto">
+  <!-- Minimal Breadcrumb -->
+  <nav class="flex text-xs font-bold text-zinc-500 uppercase tracking-widest mb-10 items-center gap-2">
+    <a href="/" class="hover:text-red-500 transition-colors">Home</a>
+    <span>/</span>
+    <a href="/?category=<%= product.category ? product.category._id : '' %>" class="hover:text-red-500 transition-colors">
+      <%= product.category ? product.category.name : 'C' %>
+    </a>
+    <span>/</span>
+    <span class="text-white line-clamp-1 truncate max-w-[200px]"><%= product.name %></span>
+  </nav>
+
+  <div class="bg-zinc-950 border border-zinc-800 rounded-3xl overflow-hidden shadow-2xl">
+    <div class="grid grid-cols-1 md:grid-cols-2">
+      
+      <!-- Product Image Panel -->
+      <div class="bg-zinc-900 border-b md:border-b-0 md:border-r border-zinc-800 p-8 md:p-16 flex items-center justify-center relative group min-h-[300px]">
+        <% if (product.image) { %>
+          <img src="<%= product.image %>" alt="<%= product.name %>" class="w-full max-w-sm rounded-xl shadow-2xl shadow-black/50 transition-transform duration-700 hover:scale-105" onerror="this.onerror=null; this.src=''; this.className='hidden'; this.nextElementSibling.classList.remove('hidden');" />
+          
+          <!-- Fallback if error -->
+          <div class="hidden w-full max-w-sm aspect-[4/3] bg-zinc-950 border border-zinc-800 border-dashed rounded-xl flex flex-col items-center justify-center text-zinc-700">
+            <span class="text-xs font-bold tracking-widest uppercase">Missing File</span>
+          </div>
+        <% } else { %>
+          <div class="w-full max-w-sm aspect-[4/3] bg-zinc-950 border border-zinc-800 border-dashed rounded-xl flex flex-col items-center justify-center text-zinc-700">
+            <span class="text-xs font-bold tracking-widest uppercase">No Image</span>
+          </div>
+        <% } %>
+      </div>
+
+      <!-- Product Info Panel -->
+      <div class="p-8 md:p-16 flex flex-col justify-center">
+        <span class="inline-block text-[10px] font-black tracking-[0.2em] text-red-500 uppercase mb-4 border border-red-500/20 bg-red-500/10 px-3 py-1 rounded w-fit">
+          <%= product.category ? product.category.name : 'N/A' %>
+        </span>
+        
+        <h1 class="text-3xl md:text-5xl font-black text-white leading-none tracking-tight mb-8"><%= product.name %></h1>
+        
+        <div class="text-zinc-400 text-sm md:text-base leading-loose mb-10 flex-grow">
+          <%= product.description %>
+        </div>
+
+        <div class="space-y-6">
+          <div class="flex items-center text-xs font-mono text-zinc-600 uppercase tracking-widest gap-2">
+            <span>ID:</span>
+            <span class="text-zinc-500"><%= product._id %></span>
+          </div>
+          
+          <button class="w-full bg-red-600 hover:bg-red-700 text-white text-sm font-bold uppercase tracking-widest py-4 px-8 rounded-xl transition-all shadow-lg shadow-red-600/20 hover:shadow-red-600/40 transform active:scale-[0.98]">
+            Inquire Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>
